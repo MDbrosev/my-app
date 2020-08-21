@@ -6,17 +6,10 @@ import netlifyIdentity from 'netlify-identity-widget';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Redirect,
-  withRouter
+  withRouter,
+  Switch
 } from 'react-router-dom';
-
-// copied straight from https://reacttraining.com/react-router/web/example/auth-workflow
-////////////////////////////////////////////////////////////
-// 1. Click the public page
-// 2. Click the protected page
-// 3. Log in
-// 4. Click the back button, note the URL each time
 
 function AuthExample() {
   return (
@@ -24,17 +17,11 @@ function AuthExample() {
       <div>
         <NavBar/>
         <AuthButton />
-        <ul>
-          <li>
-            <Link to="/public">Public Page</Link>
-          </li>
-          <li>
-            <Link to="/protected">Protected Page</Link>
-          </li>
-        </ul>
-        <Route path="/public" component={Public} />
-        <Route path="/login" component={Login} />
-        <PrivateRoute path="/protected" component={Protected} />
+        <Switch>
+          <Route path="/public" component={Public} />
+          <Route path="/login" component={Login} />
+          <PrivateRoute path="/protected" component={Protected} />
+        </Switch>
       </div>
     </Router>
   );
