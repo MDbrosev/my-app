@@ -1,6 +1,7 @@
 import React from 'react';
-import Protected from './Protected';
-import Public from './Public';
+import Protected from './components/Protected';
+import Public from './components/Public';
+import NavBar from './components/navbar'
 import netlifyIdentity from 'netlify-identity-widget';
 import {
   BrowserRouter as Router,
@@ -21,6 +22,7 @@ function AuthExample() {
   return (
     <Router>
       <div>
+        <NavBar/>
         <AuthButton />
         <ul>
           <li>
